@@ -2,7 +2,7 @@
 
 ![plotplot](https://github.com/jrparadis/plotplot/blob/master/screenshot.png?raw=true)
 
-A fairly basic python/flask website for controlling an Axidraw pen plotter (and probably others). Can plot SVG files, align/depower motors, edit config, easily adjust for paper size, display a webcam aimed at your plotter. 
+A fairly basic python/flask website for controlling an Axidraw pen plotter (and probably others). Can plot SVG files, align/depower motors, edit config, easily adjust for paper size, and display a webcam aimed at your plotter. 
 
 Install instructions (python, axidraw cli, flask):
 
