@@ -1,0 +1,112 @@
+<html>
+<head>
+
+</head>
+<body>
+{% include 'header.html' %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+        Basic commands:<br>
+        <button onclick="location.href='./align'" type="button">Motors off, allow movement</button><br>
+        <!-- for interactive mode: 
+        <button onclick="location.href='./home'" type="button">Home (move to 0,0)</button><br> -->
+        <button onclick="location.href='./pendown'" type="button">Pen Down</button><br>
+        <button onclick="location.href='./penup'" type="button">Pen Up</button><br>
+        <form method="POST" action="/plot">
+        <!-- change value below to change default path in textbox. 
+        javascript below is for browsing directories and files, but always comes back with
+        "c:\fakepath". I'm probably missing something obvious.        -->
+        <input name="path" id="path" value="{{directory}}" /input><br>
+        <!-- <input type="file" id="filename" name="filename">
+        <script>var textbox = document.getElementById('path');
+        var fileselect = document.getElementById('filename');
+
+        fileselect.onchange = function(){
+        textbox.value = textbox.value  + fileselect.value; //to appened
+        //textbox.innerHTML = this.value; 
+        }</script>
+        -->
+        
+        <!-- set any of these to default by putting checked after value        -->
+
+        <div>
+        <input type='radio' name="reorder" value="0" /input>
+        <label for="model">No reordering; preserve order of objects.</label><br>
+        <input type='radio' name="reorder" value="1" checked /input>
+        <label for="model">Reorder objects, preserving groups.</label><br>
+        <input type='radio' name="reorder" value="2" /input>
+        <label for="model">Reorder objects, reordering within each group.</label><br>
+        <input type='radio' name="reorder" value="3" /input>
+        <label for="model">Reorder all objects, breaking apart groups.</label><br>
+        </div>
+        <input name="constantspeed" type="checkbox" value="y">
+        <label for="constantspeed">Constant Speed?</label><br>
+        <input name="autorotate" type="checkbox" value="y">
+        <label for="autorotate">Disable Auto-Rotation?</label><br>
+        <input name="reporttime" type="checkbox" value="y">
+        <label for="reporttime">Report Time?</label><br>
+        <div>
+        <!-- change values and labels to match whatever sized paper you frequently use -->
+        <input type='radio' name="paper" value="14x11" required /input>
+        <label for="model">14 x 11</label><br>
+        <input type='radio' name="paper" value="15x11" /input>
+        <label for="model">15 x 11</label><br>
+        <input type='radio' name="paper" value="16x12" /input>
+        <label for="model">16 x 12</label><br>
+        </div>
+        <button type="submit">Plot</button>
+      </form>
+
+    </div>
+    <div class="col-sm">
+<!-- external cam ip, second is for usb/local/pi
+<img src="http://192.168.0.6:18076/" style="width: 640; height: 420; overflow: hidden;" allow="autoplay; "> 
+-->
+<video id="video" width="640" height="480" autoplay></video>
+<canvas id="canvas" width="640" height="480"></canvas>
+        <script>
+        // Grab elements, create settings, etc.
+var video = document.getElementById('video');
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+    });
+}
+        </script>
+    </div>
+    <div class="col-sm">
+    <div style="text-align:right;">
+    <form method="POST" name="config" action="/config"><br>
+    
+    config.py setup:<br>
+    speed_pendown: <input name="speed_pendown" value="{{config['speed_pendown']}}" /input><br>
+    speed_penup: <input name="speed_penup" value="{{config['speed_penup']}}" /input><br>
+    accel: <input name="accel " value="{{config['accel ']}}" /input><br>
+    pen_pos_down: <input name="pen_pos_down" value="{{config['pen_pos_down']}}" /input><br>
+    pen_pos_up: <input name="pen_pos_up" value="{{config['pen_pos_up']}}" /input><br>
+    pen_rate_lower: <input name="pen_rate_lower" value="{{config['pen_rate_lower']}}" /input><br>
+    pen_rate_raise: <input name="pen_rate_raise" value="{{config['pen_rate_raise']}}" /input><br>
+    pen_delay_down: <input name="pen_delay_down" value="{{config['pen_delay_down']}}" /input><br>
+    pen_delay_up: <input name="pen_delay_up" value="{{config['pen_delay_up']}}" /input><br>
+    model width (inches): <input name="x_travel_V3A3" value="{{config['x_travel_V3A3']}}" /input><br>
+    model height (inches): <input name="y_travel_V3A3" value="{{config['y_travel_V3A3']}}" /input><br>
+    <button type="submit" action='/'> reload config</button><button type="submit">write config</button>
+    </form>
+Version: {{version}}
+    </div>
+    
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
