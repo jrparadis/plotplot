@@ -85,12 +85,12 @@ def home():
 
 @app.route('/penup')
 def penup():
-    os.system("axicli -m manual -M lower_pen")
+    os.system("axicli -m manual -M raise_pen")
     return redirect('/')
 
 @app.route('/pendown')
 def pendown():
-    os.system("axicli -m manual -M raise_pen")
+    os.system("axicli -m manual -M lower_pen")
     return redirect('/')
 
 @app.route('/align')
