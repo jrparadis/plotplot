@@ -6,20 +6,13 @@ A fairly basic python/flask website for controlling an Axidraw pen plotter (and 
 
 Install instructions (python, axidraw cli, flask):
 
-install Python 3
+    install Python 3
+    run these commands:
+    pip install flask
+    pip install https://cdn.evilmadscientist.com/dl/ad/public/AxiDraw_API.zip (https://axidraw.com/doc/cli_api/#about-axidraw)
+    clone repo, cd to the directory and do "set FLASK_APP=plotplot.py" for windows, "export FLASK_APP=plotplot.py" for linux/mac, then "flask run"
+    navigate to 127.0.0.1:5000. 
 
-run these commands:
-
-pip install flask
-
-pip install https://cdn.evilmadscientist.com/dl/ad/public/AxiDraw_API.zip (https://axidraw.com/doc/cli_api/#about-axidraw)
-
-clone repo, cd to the directory and do "set FLASK_APP=plotplot.py" for windows, "export FLASK_APP=plotplot.py" for linux/mac, then "flask run"
-
-navigate to 127.0.0.1:5000. 
-
-
- 
 I wanted to get away from inkscape and the lagginess of loading files, and have something like octoprint where I could just load a webpage from anywhere to control it and view a webcam. I should be able to run this on an old raspberry pi as well - I'm not sure if that's possible with inkscape.
 
 There's a few comments in templates/index.html that explain some default settings you might like to change, but it's not required.
