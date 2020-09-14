@@ -1,5 +1,7 @@
 # plotplot
 
+![plotplot](https://github.com/jrparadis/plotplot/blob/master/screenshot.png?raw=true)
+
 A fairly basic python/flask website for controlling an Axidraw pen plotter (and probably others). Can plot SVG files, align/depower motors, edit config, easily adjust for paper size, display a webcam aimed at your plotter. 
 
 I wanted to get away from inkscape and the lagginess of loading files, and have something like octoprint where I could just load a webpage from anywhere to control it and view a webcam. I should be able to run this on an old raspberry pi as well - I'm not sure if that's possible with inkscape.
