@@ -12,7 +12,7 @@ import shutil
 #make var to generate entirely new ./backup/conf_default.py incase of error
 #make a read config file that outputs a list with all the vars in post action plot
 def optimize(name,out,width,height):
-    #probably not needed with axicli's reordering
+    #erros with some svg files - replace with vpype later to scale paper size
     svg = ''
     with open(name, 'r') as f:
         svg += f.read() 
@@ -100,22 +100,19 @@ def align():
 
 @app.route('/plot', methods=['GET', 'POST'])
 def plot():
-    
     file = request.form.get('path')
     print(file)
-    
     paper = request.form.get('paper').split('x')
     print(paper[1], paper[0])
     shutil.copyfile(file,f"{file}.bk")
     optimize(file,f"{file}.bk",paper[0],paper[1])
     reorder = request.form.get('reorder')
-    
-    default = f'axicli {file} --mode plot'
+    default = f'axicli {file}.bk --mode plot --config config.py'
     if reorder != 0:
         reorder = f' -G{reorder}'
         default += reorder
         print('mode set to reorder', default) 
-    os.system(f"axicli {file}.bk --mode plot --config config.py")
+    os.system(f"{default}")
     return redirect('/')
 
 @app.route('/config', methods=['GET', 'POST'])
