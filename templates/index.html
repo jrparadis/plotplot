@@ -10,25 +10,10 @@
     <div class="col-sm">
         Basic commands:<br>
         <button onclick="location.href='./align'" type="button">Motors off, allow movement</button><br>
-        <!-- for interactive mode: 
-        <button onclick="location.href='./home'" type="button">Home (move to 0,0)</button><br> -->
         <button onclick="location.href='./pendown'" type="button">Pen Down</button><br>
         <button onclick="location.href='./penup'" type="button">Pen Up</button><br>
         <form method="POST" action="/plot" enctype=multipart/form-data>
-        <!-- change value below to change default path in textbox. 
-        javascript below is for browsing directories and files, but always comes back with
-        "c:\fakepath". I'm probably missing something obvious.        -->
         <input type=file name="file" id="file" /input><br>
-        <!--<input name="path" id="path" value="{{directory}}" /input><br> -->
-        <!-- <input type="file" id="filename" name="filename">
-        <script>var textbox = document.getElementById('path');
-        var fileselect = document.getElementById('filename');
-
-        fileselect.onchange = function(){
-        textbox.value = textbox.value  + fileselect.value; //to appened
-        //textbox.innerHTML = this.value; 
-        }</script>
-        -->
         
         <!-- set any of these to default by putting checked after value        -->
         <input name="border" id="border" value="1" size="5" /input>
@@ -99,3 +84,5 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
 </body>
 </html>
+
+
