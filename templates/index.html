@@ -14,11 +14,12 @@
         <button onclick="location.href='./home'" type="button">Home (move to 0,0)</button><br> -->
         <button onclick="location.href='./pendown'" type="button">Pen Down</button><br>
         <button onclick="location.href='./penup'" type="button">Pen Up</button><br>
-        <form method="POST" action="/plot">
+        <form method="POST" action="/plot" enctype=multipart/form-data>
         <!-- change value below to change default path in textbox. 
         javascript below is for browsing directories and files, but always comes back with
         "c:\fakepath". I'm probably missing something obvious.        -->
-        <input name="path" id="path" value="{{directory}}" /input><br>
+        <input type=file name="file" id="file" /input><br>
+        <!--<input name="path" id="path" value="{{directory}}" /input><br> -->
         <!-- <input type="file" id="filename" name="filename">
         <script>var textbox = document.getElementById('path');
         var fileselect = document.getElementById('filename');
@@ -30,17 +31,8 @@
         -->
         
         <!-- set any of these to default by putting checked after value        -->
-
-        <div>
-        <input type='radio' name="reorder" value="0" /input>
-        <label for="model">No reordering; preserve order of objects.</label><br>
-        <input type='radio' name="reorder" value="1" checked /input>
-        <label for="model">Reorder objects, preserving groups.</label><br>
-        <input type='radio' name="reorder" value="2" /input>
-        <label for="model">Reorder objects, reordering within each group.</label><br>
-        <input type='radio' name="reorder" value="3" /input>
-        <label for="model">Reorder all objects, breaking apart groups.</label><br>
-        </div>
+        <input name="border" id="border" value="1" size="5" /input>
+        <label for="border">border in inches</label><br>
         <input name="constantspeed" type="checkbox" value="y">
         <label for="constantspeed">Constant Speed?</label><br>
         <input name="autorotate" type="checkbox" value="y">
@@ -56,12 +48,12 @@
         <input type='radio' name="paper" value="16x12" /input>
         <label for="model">16 x 12</label><br>
         </div>
-        <button type="submit">Plot</button>
+        <button type="submit" value=Upload>Plot</button>
       </form>
 
     </div>
     <div class="col-sm">
-<!-- external cam ip, second is for usb/local/pi
+<!-- external cam ip, second is for PI
 <img src="http://192.168.0.6:18076/" style="width: 640; height: 420; overflow: hidden;" allow="autoplay; "> 
 -->
 <video id="video" width="640" height="480" autoplay></video>
@@ -99,7 +91,6 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     model height (inches): <input name="y_travel_V3A3" value="{{config['y_travel_V3A3']}}" /input><br>
     <button type="submit" action='/'> reload config</button><button type="submit">write config</button>
     </form>
-Version: {{version}}
     </div>
     
     </div>
@@ -108,5 +99,3 @@ Version: {{version}}
 
 </body>
 </html>
-
-
