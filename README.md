@@ -16,9 +16,9 @@ Install instructions (python, axidraw cli, flask, vpype):
 
 I wanted to get away from inkscape and the lagginess of loading files, and have something like octoprint where I could just load a webpage from anywhere to control it and view a webcam. I should be able to run this on an old raspberry pi as well - I'm not sure if that's possible with inkscape.
 
-    There's a few comments in templates/index.html that explain some default settings you might like to change, but it's not required.
+There's a few comments in templates/index.html that explain some default settings you might like to change, but it's not required.
 
-    Overall I'm satisfied with it for standard pen plotting. There's a few things that need fixing to make it a bit easier to use or give it more functionality:
+Overall I'm satisfied with it for standard pen plotting. There's a few things that need fixing to make it a bit easier to use or give it more functionality:
 
     radio buttons for axidraw model or text listing model:model dimentions to be used with paper height/width. currently adjusted via model width/height textbox
 
